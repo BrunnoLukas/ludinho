@@ -77,6 +77,24 @@ public class Jogo {
             novaPeca.mover(casaGuarita);
         }
         
+        guarita = tabuleiro.getGuarita("VERMELHO");
+        for (Casa casaGuarita : guarita.getTodasAsCasas()) {
+            Peca novaPeca = new Peca("VERMELHO");
+            novaPeca.mover(casaGuarita);
+        }
+        
+        guarita = tabuleiro.getGuarita("AMARELO");
+        for (Casa casaGuarita : guarita.getTodasAsCasas()) {
+            Peca novaPeca = new Peca("AMARELO");
+            novaPeca.mover(casaGuarita);
+        }
+        
+        guarita = tabuleiro.getGuarita("AZUL");
+        for (Casa casaGuarita : guarita.getTodasAsCasas()) {
+            Peca novaPeca = new Peca("AZUL");
+            novaPeca.mover(casaGuarita);
+        }
+        
 
         // Obtemos uma das peças verdes que inicializamos logo acima para usa-la como exemplo.
         // Movemos ela para a casa de inicio do jogador verde.
@@ -91,10 +109,18 @@ public class Jogo {
         peca.mover(casaInicio);
         
         // Apenas como um exemplo adicional, colocamos uma peça azul no tabuleiro.
+        
         peca = new Peca("AZUL");
         casaInicio = tabuleiro.getCasaInicio("AZUL");
         peca.mover(casaInicio);
-
+        
+        peca = new Peca("VERMELHO");
+        casaInicio = tabuleiro.getCasaInicio("VERMELHO");
+        peca.mover(casaInicio);
+        
+        peca = new Peca("AMARELO");
+        casaInicio = tabuleiro.getCasaInicio("AMARELO");
+        peca.mover(casaInicio);
         //
         // TRECHO DE EXEMPLO
         //
@@ -166,11 +192,11 @@ public class Jogo {
             // // NÃO HÁ PRÓXIMA CASA!
             // // FIM DO JOGO? A PEÇA ESTÁ NA GUARITA?
             // // Descomente a próxima linha para ser notificado quando isso acontecer:
-            // System.err.println("Não há próxima casa!");
+            System.err.println("Não há próxima casa!");
         
             // // Descomente as duas próximas linhas para verificar se a peça está na guarita:
-            // if (casa.pertenceGuarita())
-            //     System.out.println("A peça está na guarita");
+            if (casa.pertenceGuarita())
+               System.out.println("A peça está na guarita");
         }
     }
     
