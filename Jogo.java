@@ -98,6 +98,7 @@ public class Jogo {
 
         // Obtemos uma das peças verdes que inicializamos logo acima para usa-la como exemplo.
         // Movemos ela para a casa de inicio do jogador verde.
+       
         Casa casaGuarita;
         Casa casaInicio;
         Peca peca;
@@ -106,21 +107,27 @@ public class Jogo {
         casaGuarita = guarita.getCasa(0);
         peca = casaGuarita.getPeca();
         casaInicio = tabuleiro.getCasaInicio("VERDE");
-        peca.mover(casaInicio);
+        
         
         // Apenas como um exemplo adicional, colocamos uma peça azul no tabuleiro.
         
-        peca = new Peca("AZUL");
+        guarita = tabuleiro.getGuarita("AZUL");
+        casaGuarita = guarita.getCasa(0);
+        peca = casaGuarita.getPeca();
         casaInicio = tabuleiro.getCasaInicio("AZUL");
-        peca.mover(casaInicio);
         
-        peca = new Peca("VERMELHO");
+        
+        guarita = tabuleiro.getGuarita("VERMELHO");
+        casaGuarita = guarita.getCasa(0);
+        peca = casaGuarita.getPeca();
         casaInicio = tabuleiro.getCasaInicio("VERMELHO");
-        peca.mover(casaInicio);
         
-        peca = new Peca("AMARELO");
+        
+        guarita = tabuleiro.getGuarita("AMARELO");
+        casaGuarita = guarita.getCasa(0);
+        peca = casaGuarita.getPeca();
         casaInicio = tabuleiro.getCasaInicio("AMARELO");
-        peca.mover(casaInicio);
+        
         //
         // TRECHO DE EXEMPLO
         //
