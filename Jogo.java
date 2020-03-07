@@ -165,7 +165,18 @@ public class Jogo {
         // TODA VEZ QUE O USUÁRIO CLICAR EM UMA CASA DESENHADA NA INTERFACE GRÁFICA,
         // ESTE MÉTODO SERÁ INVOCADO.
         
-        
+        if(this.dados[0].getValor() == this.dados[1].getValor()){
+            Guarita guarita;
+            Casa casaGuarita;
+            Casa casaInicio;
+            Peca peca;
+                
+            guarita = tabuleiro.getGuarita(getJogadorDaVez());
+            casaGuarita = guarita.getCasa(0);
+            peca = casaGuarita.getPeca();
+            casaInicio = tabuleiro.getCasaInicio(getJogadorDaVez());
+            peca.mover(casaInicio);
+        }
         //
         // TRECHO DE EXEMPLO
         //
@@ -188,8 +199,14 @@ public class Jogo {
         // Percorreremos N casas.
         Casa proximaCasa = casa;
         for (int i = 0; i < somaDados && proximaCasa != null; i++) {
-            proximaCasa = proximaCasa.getCasaSeguinte();
+            proximaCasa = proximaCasa.getCasaSeguinte();     
+            if(casa.ehEntradaZonaSegura() == true){
+                for (int x = i ; x < somaDados && proximaCasa != null; x++){
+                proximaCasa = proximaCasa.getCasaSegura();
+                }            
+            }
         }
+        
 
         if (proximaCasa != null) {
             // Finalmente, a variável casaN contém a casa que a peça deve ser inserida.
@@ -212,7 +229,7 @@ public class Jogo {
      * @return Cor do jogador.
      */
     public String getJogadorDaVez() {
-        return null;
+        return "VERDE";
     }
     
     /**
