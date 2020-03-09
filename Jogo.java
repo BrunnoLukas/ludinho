@@ -101,12 +101,17 @@ public class Jogo {
        
         Casa casaGuarita;
         Casa casaInicio;
+        Casa casaSegura;
         Peca peca;
                 
         guarita = tabuleiro.getGuarita("VERDE");
         casaGuarita = guarita.getCasa(0);
         peca = casaGuarita.getPeca();
         casaInicio = tabuleiro.getCasaInicio("VERDE");
+        casaGuarita = guarita.getCasa(1);
+        peca = casaGuarita.getPeca();
+        peca.mover(casaInicio);
+        
         
         
         // Apenas como um exemplo adicional, colocamos uma peça azul no tabuleiro.
@@ -198,17 +203,51 @@ public class Jogo {
         
         // Percorreremos N casas.
         Casa proximaCasa = casa;
-        for (int i = 0; i < somaDados && proximaCasa != null; i++) {
-            proximaCasa = proximaCasa.getCasaSeguinte();     
-            if(casa.ehEntradaZonaSegura() == true){
-                for (int x = i ; x < somaDados && proximaCasa != null; x++){
-                proximaCasa = proximaCasa.getCasaSegura();
-                }            
+        Casa casaSegura = casa;
+        Casa anterior  = casa;
+        int i = 0;
+        for (int count = i ; count < somaDados && proximaCasa != null; count++) {
+            proximaCasa = proximaCasa.getCasaSeguinte(); 
+            casaSegura = proximaCasa.getCasaSegura();
+            anterior = proximaCasa.getCasaAnterior();
+            
+            if(proximaCasa.ehEntradaZonaSegura() == true && casaSegura.getCor() == peca.getCor()){
+                    proximaCasa = proximaCasa.getCasaSegura();
+                    for (count = i; count < somaDados && proximaCasa == null; count++){
+                        proximaCasa = proximaCasa.getCasaSegura();
+                        i++;
+                }
+                i++;
+            } 
+            if(proximaCasa.ehCasaFinal() == true && proximaCasa == proximaCasa.getCasaSegura()){
+                for (count = i; count < somaDados; count++){
+                    proximaCasa = proximaCasa.getCasaAnterior();
+                
+                    i++;
+                    if(anterior.ehEntradaZonaSegura() == true && casaSegura.getCor() == peca.getCor()){
+                        proximaCasa = proximaCasa.getCasaSegura();
+                        for (count = i; count < somaDados && proximaCasa == null; count++){
+                            proximaCasa = proximaCasa.getCasaSegura();
+                            i++;
+                        }
+                        i++;
+                    }
+                }   
+            if(i == somaDados && proximaCasa.ehCasaFinal() == true){
+                    for (count = i ; count < somaDados && proximaCasa != null; count++) {
+                        proximaCasa = proximaCasa.getCasaSegura();
+                    }
             }
+            }
+            
         }
         
+       // casaSegura.getCor() == peca.getCor() && somaDados < i
+        
+     
+        
 
-        if (proximaCasa != null) {
+            if (proximaCasa != null) {
             // Finalmente, a variável casaN contém a casa que a peça deve ser inserida.
             peca.mover(proximaCasa);
         }
@@ -229,7 +268,7 @@ public class Jogo {
      * @return Cor do jogador.
      */
     public String getJogadorDaVez() {
-        return "VERDE";
+        return;
     }
     
     /**
