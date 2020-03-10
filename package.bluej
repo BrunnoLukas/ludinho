@@ -83,25 +83,14 @@ dependency8.type=UsesDependency
 dependency9.from=Tabuleiro
 dependency9.to=Guarita
 dependency9.type=UsesDependency
-<<<<<<< HEAD
-editor.fx.0.height=738
-editor.fx.0.width=816
-editor.fx.0.x=312
-editor.fx.0.y=41
+editor.fx.0.height=876
+editor.fx.0.width=1456
+editor.fx.0.x=-8
+editor.fx.0.y=-8
 objectbench.height=156
 objectbench.width=1342
 package.divider.horizontal=0.6
 package.divider.vertical=0.7472868217054264
-=======
-editor.fx.0.height=739
-editor.fx.0.width=816
-editor.fx.0.x=552
-editor.fx.0.y=100
-objectbench.height=155
-objectbench.width=1342
-package.divider.horizontal=0.6
-package.divider.vertical=0.7484472049689441
->>>>>>> a424e84f09d6ecc2e9a7fe806a9277b07e477372
 package.editor.height=462
 package.editor.width=1220
 package.editor.x=0
