@@ -219,8 +219,8 @@ public class Jogo {
             anterior = proximaCasa.getCasaAnterior();
             
             if(proximaCasa.ehEntradaZonaSegura() == true && casaSegura.getCor() == peca.getCor()){
-                    proximaCasa = proximaCasa.getCasaSegura();
-                    for (count = i; i < somaDados && proximaCasa == null; i++){
+                    proximaCasa = casaSegura;
+                    for (count = i; i < somaDados && proximaCasa != null; i++){
                         proximaCasa = proximaCasa.getCasaSegura();
                         i++;
                 }
@@ -233,7 +233,7 @@ public class Jogo {
                     i++;
                     if(anterior.ehEntradaZonaSegura() == true && casaSegura.getCor() == peca.getCor()){
                         proximaCasa = proximaCasa.getCasaSegura();
-                        for (count = i; i < somaDados && proximaCasa == null; i++){
+                        for (count = i; i < somaDados && proximaCasa != null; i++){
                             proximaCasa = proximaCasa.getCasaSegura();
                             i++;
                         }
