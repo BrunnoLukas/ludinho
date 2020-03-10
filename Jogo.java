@@ -101,37 +101,15 @@ public class Jogo {
        
         Casa casaGuarita;
         Casa casaInicio;
-        Casa casaSegura;
         Peca peca;
                 
-        guarita = tabuleiro.getGuarita("VERDE");
-        casaGuarita = guarita.getCasa(0);
-        peca = casaGuarita.getPeca();
-        casaInicio = tabuleiro.getCasaInicio("VERDE");
-        casaGuarita = guarita.getCasa(1);
-        peca = casaGuarita.getPeca();
-        peca.mover(casaInicio);
         
+
         
         
         // Apenas como um exemplo adicional, colocamos uma peça azul no tabuleiro.
         
-        guarita = tabuleiro.getGuarita("AZUL");
-        casaGuarita = guarita.getCasa(0);
-        peca = casaGuarita.getPeca();
-        casaInicio = tabuleiro.getCasaInicio("AZUL");
-        
-        
-        guarita = tabuleiro.getGuarita("VERMELHO");
-        casaGuarita = guarita.getCasa(0);
-        peca = casaGuarita.getPeca();
-        casaInicio = tabuleiro.getCasaInicio("VERMELHO");
-        
-        
-        guarita = tabuleiro.getGuarita("AMARELO");
-        casaGuarita = guarita.getCasa(0);
-        peca = casaGuarita.getPeca();
-        casaInicio = tabuleiro.getCasaInicio("AMARELO");
+       
         
         //
         // TRECHO DE EXEMPLO
@@ -171,16 +149,45 @@ public class Jogo {
         // ESTE MÉTODO SERÁ INVOCADO.
         
         if(this.dados[0].getValor() == this.dados[1].getValor()){
-            Guarita guarita;
-            Casa casaGuarita;
-            Casa casaInicio;
-            Peca peca;
-                
-            guarita = tabuleiro.getGuarita(getJogadorDaVez());
-            casaGuarita = guarita.getCasa(0);
-            peca = casaGuarita.getPeca();
-            casaInicio = tabuleiro.getCasaInicio(getJogadorDaVez());
-            peca.mover(casaInicio);
+              if (casa.pertenceGuarita()){
+                 Guarita guarita;
+                 Casa casaGuarita;
+                 Casa casaInicio;
+                 Peca peca;
+                 
+                 guarita = tabuleiro.getGuarita(getJogadorDaVez());
+                 casaInicio = tabuleiro.getCasaInicio(getJogadorDaVez());
+                 casaGuarita = casa;
+                 
+                 if(casa == guarita.getCasa(0)){
+                     guarita = tabuleiro.getGuarita(getJogadorDaVez());
+                     casaGuarita = guarita.getCasa(0);
+                     peca = casaGuarita.getPeca();
+                     casaInicio = tabuleiro.getCasaInicio(getJogadorDaVez());
+                     peca.mover(casaInicio);
+                 }
+                 if(casa == guarita.getCasa(1)){
+                     guarita = tabuleiro.getGuarita(getJogadorDaVez());
+                     casaGuarita = guarita.getCasa(1);
+                     peca = casaGuarita.getPeca();
+                     casaInicio = tabuleiro.getCasaInicio(getJogadorDaVez());
+                     peca.mover(casaInicio);
+                 }
+                 if(casa == guarita.getCasa(2)){
+                     guarita = tabuleiro.getGuarita(getJogadorDaVez());
+                     casaGuarita = guarita.getCasa(2);
+                     peca = casaGuarita.getPeca();
+                     casaInicio = tabuleiro.getCasaInicio(getJogadorDaVez());
+                     peca.mover(casaInicio);
+                 }
+                 if(casa == guarita.getCasa(3)){
+                     guarita = tabuleiro.getGuarita(getJogadorDaVez());
+                     casaGuarita = guarita.getCasa(3);
+                     peca = casaGuarita.getPeca();
+                     casaInicio = tabuleiro.getCasaInicio(getJogadorDaVez());
+                     peca.mover(casaInicio);
+                 }
+                 }
         }
         //
         // TRECHO DE EXEMPLO
@@ -206,27 +213,27 @@ public class Jogo {
         Casa casaSegura = casa;
         Casa anterior  = casa;
         int i = 0;
-        for (int count = i ; count < somaDados && proximaCasa != null; count++) {
+        for (int count = i ; i < somaDados && proximaCasa != null; i++) {
             proximaCasa = proximaCasa.getCasaSeguinte(); 
             casaSegura = proximaCasa.getCasaSegura();
             anterior = proximaCasa.getCasaAnterior();
             
             if(proximaCasa.ehEntradaZonaSegura() == true && casaSegura.getCor() == peca.getCor()){
                     proximaCasa = proximaCasa.getCasaSegura();
-                    for (count = i; count < somaDados && proximaCasa == null; count++){
+                    for (count = i; i < somaDados && proximaCasa == null; i++){
                         proximaCasa = proximaCasa.getCasaSegura();
                         i++;
                 }
                 i++;
             } 
             if(proximaCasa.ehCasaFinal() == true && proximaCasa == proximaCasa.getCasaSegura()){
-                for (count = i; count < somaDados; count++){
+                for (count = i; i < somaDados; i++){
                     proximaCasa = proximaCasa.getCasaAnterior();
                 
                     i++;
                     if(anterior.ehEntradaZonaSegura() == true && casaSegura.getCor() == peca.getCor()){
                         proximaCasa = proximaCasa.getCasaSegura();
-                        for (count = i; count < somaDados && proximaCasa == null; count++){
+                        for (count = i; i < somaDados && proximaCasa == null; i++){
                             proximaCasa = proximaCasa.getCasaSegura();
                             i++;
                         }
@@ -234,7 +241,7 @@ public class Jogo {
                     }
                 }   
             if(i == somaDados && proximaCasa.ehCasaFinal() == true){
-                    for (count = i ; count < somaDados && proximaCasa != null; count++) {
+                    for (count = i ; i < somaDados && proximaCasa != null; i++) {
                         proximaCasa = proximaCasa.getCasaSegura();
                     }
             }
@@ -268,7 +275,7 @@ public class Jogo {
      * @return Cor do jogador.
      */
     public String getJogadorDaVez() {
-        return;
+        return "VERDE";
     }
     
     /**
