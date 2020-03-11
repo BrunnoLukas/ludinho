@@ -11,7 +11,7 @@ public class Jogo {
     
     // Dados do jogo.
     private final Dado[] dados;
-
+    int vez=0;
     /**
      * Construtor padrão do Jogo Ludo.
      * Isto é, um jogo de Ludo convencional com dois dados.
@@ -201,6 +201,9 @@ public class Jogo {
         
         // Perguntamos à casa qual é a peça.
         Peca peca = casa.getPeca();
+        if(peca.getCor()!=getJogadorDaVez()){
+            return;
+        }
 
         // Percorremos cada dado, somando o valor nele à variável somaDados.
         int somaDados = 0;
@@ -257,6 +260,7 @@ public class Jogo {
             if (proximaCasa != null && !proximaCasa.possuiPeca()) {
             // Finalmente, a variável casaN contém a casa que a peça deve ser inserida.
             peca.mover(proximaCasa);
+            vez++;
             Peca peca2 = proximaCasa.getPeca();
             if(peca.getCor()==peca2.getCor()){
                 System.err.println("ocupei a casa!");
@@ -273,6 +277,9 @@ public class Jogo {
             if (casa.pertenceGuarita())
                System.out.println("A peça está na guarita");
         }
+        if (vez==4){
+           vez=0;
+        }
     }
     
     /**
@@ -280,7 +287,24 @@ public class Jogo {
      * @return Cor do jogador.
      */
     public String getJogadorDaVez() {
-        return "VERDE";
+        String retorno = "turno";
+        if (vez == 0)
+        {
+            retorno = "VERDE";
+        }
+        else if (vez == 1)
+        {
+            retorno = "VERMELHO";
+        }
+        else if (vez == 2)
+        {
+            retorno = "AZUL";
+        }
+        else if (vez == 3)
+        {
+            retorno = "AMARELO";         
+        }
+        return retorno;
     }
     
     /**
