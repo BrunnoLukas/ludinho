@@ -256,11 +256,13 @@ public class Jogo {
         
      
         
-
-            if (proximaCasa != null && !proximaCasa.possuiPeca()) {
-            // Finalmente, a variável casaN contém a casa que a peça deve ser inserida.
+            if (proximaCasa != null){
             peca.mover(proximaCasa);
             vez++;
+        }
+            if (proximaCasa != null && !proximaCasa.possuiPeca()) {
+            // Finalmente, a variável casaN contém a casa que a peça deve ser inserida.
+            peca.mover(proximaCasa);            
             Peca peca2 = proximaCasa.getPeca();
             if(peca.getCor()==peca2.getCor()){
                 System.err.println("ocupei a casa!");
