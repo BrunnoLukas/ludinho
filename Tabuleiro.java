@@ -32,10 +32,10 @@ public class Tabuleiro {
         // Inicializamos um tabuleiro de Ludo
         
         // Casas de Inicio
-        casaInicioAmarelo = new Casa("AMARELO");
-        casaInicioAzul = new Casa("AZUL");
-        casaInicioVerde = new Casa("VERDE");
-        casaInicioVermelho = new Casa("VERMELHO");
+        casaInicioAmarelo = new CasaComum("AMARELO");
+        casaInicioAzul = new CasaComum("AZUL");
+        casaInicioVerde = new CasaComum("VERDE");
+        casaInicioVermelho = new CasaComum("VERMELHO");
         
         
         // Casas comuns

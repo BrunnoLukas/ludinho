@@ -243,6 +243,7 @@ public abstract class Casa {
     public String getCor() {
         return cor;
     }
+    
 
     abstract public Casa proximaCasa(Castelo castelo, boolean curupira, Dado[] dados);
 
