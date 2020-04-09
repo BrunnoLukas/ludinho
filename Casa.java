@@ -17,7 +17,9 @@ public abstract class Casa {
 
     // Peça presentes neste casa
     private Castelo castelo;
-
+    
+    private Peca peca; 
+    
     // Quantidade de peças presente na casa (Para casas finais).
     private int qtdePecas;
 
@@ -63,6 +65,7 @@ public abstract class Casa {
         this.castelo = null;
         this.qtdePecas = 0;
     }
+    
 
     /**
      * Se a casa possui peça.
@@ -72,13 +75,24 @@ public abstract class Casa {
     public boolean possuiPeca() {
         return getPeca() != null;
     }
+    
+    public Peca setPeca(Peca peca) {
+        Peca r = getPeca();
+        this.peca = peca;
+        if (peca == null) {
+            this.qtdePecas = 0;
+        } else {
+            this.qtdePecas = 1;
+        }
+        return r;
+    }
 
     /**
      * Obtém a peça presente nesta casa, se houver.
      *
      * @return A peça se presente nesta casa ou null caso contrário.
      */
-    public Castelo getPeca() {
+    public Castelo getPeca(){
         return castelo;
     }
 
