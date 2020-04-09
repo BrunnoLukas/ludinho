@@ -4,7 +4,7 @@ public class CasaEntrada extends Casa {
 	private int movimentos;
 
 	public CasaEntrada(String corDaZonaSegura) {
-		super();
+		super(corDaZonaSegura);
 		corDaEntrada = corDaZonaSegura;
 	}
 
