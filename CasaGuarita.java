@@ -4,13 +4,13 @@ public class CasaGuarita extends Casa {
         super(guarita);
     }
 
-    public Casa proximaCasa(Castelo castelo, boolean curupira, Dado[] dados) {
+    public Casa proximaCasa(Castelo castelo, boolean volta, Dado[] dados) {
         if (dados[0].getValor() == dados[1].getValor())
             return tabuleiro.getCasaInicio(this.getCor());
         return this;
     }
  
-    public Casa proximaCasa(Castelo castelo, boolean curupira, int casasAAndar) {
+    public Casa proximaCasa(Castelo castelo, boolean volta, int CasaAndar) {
         // shall never be reached
         return this;
     }

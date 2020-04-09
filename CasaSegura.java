@@ -15,18 +15,18 @@ public class CasaSegura extends Casa
         }
 
 
-    	public Casa proximaCasa(Castelo castelo, boolean curupira, Dado[] dados) {
+    	public Casa proximaCasa(Castelo castelo, boolean volta, Dado[] dados) {
             if (castelo.getNivel() == 1)
                 movimentos = dados[0].getValor() + dados[1].getValor();
             else
                 movimentos = Math.min(dados[0].getValor(), dados[1].getValor());
     
-            if (curupira) {
+            if (volta) {
                 if (super.getCasaAnterior() != null)
-                    return super.getCasaAnterior().proximaCasa(castelo, curupira, movimentos - 1);
+                    return super.getCasaAnterior().proximaCasa(castelo, volta, movimentos - 1);
                 else {
-                    curupira = false;
-                    return super.getCasaSeguinte().proximaCasa(castelo, curupira, movimentos - 1);
+                    volta = false;
+                    return super.getCasaSeguinte().proximaCasa(castelo, volta, movimentos - 1);
                 }
             }
     
@@ -34,26 +34,26 @@ public class CasaSegura extends Casa
                 return this;
             }
     
-            return super.getCasaSeguinte().proximaCasa(castelo, curupira, movimentos - 1);
+            return super.getCasaSeguinte().proximaCasa(castelo, volta, movimentos - 1);
         }
     
-        public Casa proximaCasa(Castelo castelo, boolean curupira, int casasAAndar) {
-            if (casasAAndar > 0) {
-                if (curupira) {
+        public Casa proximaCasa(Castelo castelo, boolean volta, int CasaAndar) {
+            if (CasaAndar > 0) {
+                if (volta) {
                     if (super.getCasaAnterior() != null)
-                        return super.getCasaAnterior().proximaCasa(castelo, curupira, casasAAndar - 1);
+                        return super.getCasaAnterior().proximaCasa(castelo, volta, CasaAndar - 1);
                     else {
-                        curupira = false;
-                        return super.getCasaSeguinte().proximaCasa(castelo, curupira, casasAAndar - 1);
+                        volta = false;
+                        return super.getCasaSeguinte().proximaCasa(castelo, volta, CasaAndar - 1);
                     }
                 }
     
                 if (super.ehCasaFinal()) {
-                    curupira = true;
-                    return super.getCasaAnterior().proximaCasa(castelo, curupira, casasAAndar - 1);
+                    volta = true;
+                    return super.getCasaAnterior().proximaCasa(castelo, volta, CasaAndar - 1);
                 }
     
-                return super.getCasaSeguinte().proximaCasa(castelo, curupira, casasAAndar - 1);
+                return super.getCasaSeguinte().proximaCasa(castelo, volta, CasaAndar - 1);
             }
     
             return this;
